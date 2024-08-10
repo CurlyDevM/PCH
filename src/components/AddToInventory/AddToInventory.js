@@ -10,6 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import ModifyStockPerElement from '../ModifyStockPerElement/ModifyStockPerElement';
+import UploadInvoice from '../UploadInvoice/UploadInvoice';
 
 const MenuProps = {
   PaperProps: {
@@ -110,6 +111,8 @@ const AddToInventory = ({ user, editProduct, addElement }) => {
     });
   }
 
+  console.log(productsNewStock);
+
   return (
     <div className="AddToInventory">
       <h2> Modifica inventar </h2>
@@ -154,6 +157,8 @@ const AddToInventory = ({ user, editProduct, addElement }) => {
           </FormControl>
           <Button variant="contained" color="success" onClick={() => onSelectCompleted()} disabled={modifyMode || productsScanned.length > 0}>  Selecteaza </Button>
         </div>
+        <h3> Sau </h3>
+        <UploadInvoice setProductsNewStock={setProductsNewStock} setModifyMode={setModifyMode} />
       </div>
       {productsNewStock && (
 
