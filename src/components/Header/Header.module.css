@@ -1,0 +1,51 @@
+.container {
+    width: 100vw;
+    height: 100px;
+    background: #9ad4e7;
+    display: grid;
+    grid-template-columns: 350px 1fr 80px;
+    align-items: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.appLogo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.appLogo img {
+    width: 45px;
+}
+
+.appLogo div {
+    font-family: var(--accentFontFamily), cursive;
+    font-size: 30px;
+    margin-left: 15px;
+    color: #295d96
+}
+
+.pages {
+    justify-self: end;
+    padding-right: 50px;
+}
+.pages a {
+    margin-right: 15px;
+    color: #fff;
+    font-size: 20px;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

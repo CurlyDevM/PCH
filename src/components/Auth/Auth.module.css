@@ -1,0 +1,90 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom right,  var(--accentColor), var(--lightAccentColor));
+}
+
+.floatingContainer {
+    position: relative;
+    top: 15vh;
+    width: 80vw;
+    max-width: 1600px;
+    height: 70vh;
+    margin: auto;
+    display: flex;
+    background: #FFF;
+    border-radius: 60px;
+}
+
+.logoCon {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoCon img {
+    max-height: 80%;
+}
+
+.logInModal {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--accentColor);
+}
+
+.inputCon {
+    margin: 0 0 50px 0;
+    width: 20vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.inputCon > div  {
+    flex-grow: 1;
+}
+
+.container svg {
+    color: white !important;
+}
+
+.logInModal > h1 {
+    font-family: var(--accentFontFamily);
+    color: #FFF;
+    margin-bottom: 50px;
+}
+
+.logInModal > button {
+    color: #FFF;
+    border-color: #FFF;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+    .floatingContainer {
+        flex-direction: column;
+    }
+
+    .logoCon {
+        width: 100%;
+        height: 200px;
+    }
+
+    .logoCon {
+        height: 160px;
+    }
+
+    .logInModal {
+        width: 100%;
+        height: calc(100% - 100px);
+    }
+
+    .logInModal .inputCon {
+        width: 75%;
+    }
+}

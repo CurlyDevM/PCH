@@ -1,0 +1,11 @@
+.container {
+   
+}
+
+.container th, .container td span {
+    padding-left: 10px;
+}
+
+.container td, .container th {
+    font-weight: 700;
+}

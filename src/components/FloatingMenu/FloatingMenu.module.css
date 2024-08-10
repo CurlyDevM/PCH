@@ -1,0 +1,14 @@
+.container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.container button {
+    background-color: var(--accentColor);
+}
+
+.container svg {
+    color: #fff;
+}

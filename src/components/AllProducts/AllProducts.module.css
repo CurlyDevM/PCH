@@ -1,0 +1,11 @@
+.container input {
+    /* color: #fff !; */
+}
+
+.category div, .category input, .search input, .category label, .search label, .category svg {
+    color: #fff !important;
+}
+
+.category ::before {
+    border-color: #fff !important;
+}
