@@ -22,7 +22,7 @@ const VisuallyHiddenInput = styled('input')({
   });
 
 
-const UploadInvoice = ({ setProductsNewStock, setModifyMode }) => {
+const UploadInvoice = ({ onSetNewStock, setModifyMode }) => {
 
     const { products } = useContext(Context);
 
@@ -68,7 +68,7 @@ const UploadInvoice = ({ setProductsNewStock, setModifyMode }) => {
                 }
 
                 if(scannedProducts.length > 0) {
-                    setProductsNewStock(scannedProducts)
+                    onSetNewStock(scannedProducts)
                     setModifyMode(true)
                 }
             }

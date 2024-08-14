@@ -1,5 +1,7 @@
 // ./hooks/useAuth.js
 import { useEffect, useState } from "react";
+import dayjs from 'dayjs'
+
 // import 'firebase/compat/auth';
 // import 'firebase/compat/firestore';
 
@@ -23,7 +25,7 @@ const useAuth = (firebase, isFirebaseInitialized) => {
         getProducts = () => {
             db.collection('products').onSnapshot(snapshot => {
                 const data = snapshot.docs.map(doc => {
-                    return { ...doc.data(), id: doc.id };
+                    return { ...doc.data(), id: doc.id, weightToDisplay: `${doc.data().weight} ${doc.data().weightType ? doc.data().weightType : ''}`};
                 })
                 setProducts(data);
             })
@@ -43,14 +45,14 @@ const useAuth = (firebase, isFirebaseInitialized) => {
                         products: log.products.map( product => {
                             return {
                                 ...product,
-                                diff_unsealed_quantity: product.old_unsealed_quantity - product.new_unsealed_quantity,
-                                diff_sealed_quantity: product.old_sealed_quantity - product.new_sealed_quantity,
+                                diff_unsealed_quantity: product.new_unsealed_quantity - product.old_unsealed_quantity,
+                                diff_sealed_quantity: product.new_sealed_quantity - product.old_sealed_quantity,
                             }
                         })
                     }
                 })
-                console.log(dataWithCalcule);
-                setLogs(dataWithCalcule);
+                const sortedLogs = dataWithCalcule.sort((a, b) =>  dayjs(b.time_stamp).unix() - dayjs(a.time_stamp).unix());
+                setLogs(sortedLogs);
             })
         }
 
@@ -75,13 +77,13 @@ const useAuth = (firebase, isFirebaseInitialized) => {
         }
 
         editProduct = (product) => {
-            console.log('to update', { sealed_quantity: Number(product.newSealedQuantity), unsealed_quantity: Number(product.newUnsealedQuantity) })
-            db.collection('products').doc(product.id).update({ sealed_quantity: Number(product.newSealedQuantity), unsealed_quantity: Number(product.newUnsealedQuantity) }) 
-            // console.log( db.collection("products").doc(product.id));
-            // console.log(product);
-            // db.collection('products').doc(product.id).update({ sealed_quantity: product.sealed_quantity, unsealed_quantity: product.unsealed_quantity }).then ( r => {
-            //     console.log(r);
-            // });
+            const newProduct = {
+                ...product,
+                sealed_quantity: product.newSealedQuantity ? Number(product.newSealedQuantity) : product.sealed_quantity , 
+                unsealed_quantity: product.newUnsealedQuantity ? Number(product.newUnsealedQuantity) : product.unsealed_quantity
+            }
+            console.log('to update', newProduct)
+            db.collection('products').doc(product.id).update(newProduct) 
         }
     }
 

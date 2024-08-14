@@ -2,7 +2,11 @@ import React, { useMemo, useState, useEffect } from 'react'
 import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
+import Button from '@mui/material/TableCell';
+import { Portal } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
+import Product from '../Product/Product';
 
 
 function stableSort(array, comparator) {
@@ -37,6 +41,7 @@ const ProductsBody = ({ rows, rowsPerPage, order, page, orderBy, dense, header }
 
     const [emptyRows, setEmptyRows] = useState(0);
     const [visibleRows, setVisibleRows] = useState([]);
+    const [editProductPortal, setEditProductPortal] = useState(null);
 
 
     useEffect(() => {
@@ -48,43 +53,55 @@ const ProductsBody = ({ rows, rowsPerPage, order, page, orderBy, dense, header }
     }, [page, rowsPerPage, rows]);
 
     useEffect(() => {
-        const newVisible = stableSort(rows, getComparator(order, orderBy)).slice( page * rowsPerPage, page * rowsPerPage + rowsPerPage );
+        const newVisible = stableSort(rows, getComparator(order, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
         setVisibleRows(newVisible);
     }, [rows, order, orderBy, page, rowsPerPage]);
-    
+
 
 
     return (
-        <TableBody>
-            {visibleRows.map((row, index) => {
-                const labelId = `enhanced-table-checkbox-${index}`;
-                return (
+        <>
+            <TableBody>
+                {visibleRows.map((row, index) => {
+                    const labelId = `enhanced-table-checkbox-${index}`;
+                    return (
+                        <TableRow
+                            hover
+                            role="checkbox"
+                            tabIndex={-1}
+                            key={row.name}
+                            className={row.sealed_quantity <= row.warning_quantity ? "showWarning" : ""}
+                        >
+                            {/* {rows()} */}
+                            {header.map((h, i) => {
+                                if (i === 0) {
+                                    return <TableCell className={h.id} component="th" id={labelId} scope="row" padding="none"> <Button className="pointer" onClick={() => setEditProductPortal(row)}> {row[h.id]} </Button> </TableCell>
+                                } else return <TableCell className={h.id} align="right">{row[h.id]}</TableCell>
+                            })}
+                        </TableRow>
+                    );
+                })}
+                {emptyRows > 0 && (
                     <TableRow
-                        hover
-                        role="checkbox"
-                        tabIndex={-1}
-                        key={row.name}
-                        className={ row.sealed_quantity <= row.warning_quantity ? "showWarning":""}
+                        style={{
+                            height: (dense ? 33 : 53) * emptyRows,
+                        }}
                     >
-                        {/* {rows()} */}
-                        {header.map( (h,i) => {
-                            if(i === 0) {
-                                return <TableCell className={h.id} component="th" id={labelId} scope="row" padding="none"> {row[h.id]} </TableCell>
-                            } else  return <TableCell className={h.id} align="right">{row[h.id]}</TableCell>
-                        })}
+                        <TableCell colSpan={6} />
                     </TableRow>
-                );
-            })}
-            {emptyRows > 0 && (
-                <TableRow
-                    style={{
-                        height: (dense ? 33 : 53) * emptyRows,
-                    }}
-                >
-                    <TableCell colSpan={6} />
-                </TableRow>
+                )}
+            </TableBody>
+            {editProductPortal && (
+                <Portal>
+                    <div className="Portal">
+                        <div className="Portal__con">
+                            <Button className="Portal__con__close" onClick={() => setEditProductPortal(null)}> <CloseIcon /> </Button>
+                            <Product existentProduct={editProductPortal} onClosePortal={setEditProductPortal} />
+                        </div>
+                    </div>
+                </Portal>
             )}
-        </TableBody>
+        </>
     )
 }
 

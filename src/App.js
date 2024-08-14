@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useRoutes } from "react-router-dom";
+import { useRoutes, useNavigate, useLocation } from "react-router-dom";
 
 
 //Hooks
@@ -19,15 +19,20 @@ import FloatingMenu from './components/FloatingMenu/FloatingMenu';
 
 function App() {
 
+  const location = useLocation();
+  const navigate = useNavigate();
   const { firebaseObject, isFirebaseInitialized, initializaFirebase } = useFirebase();
   const { user, products, logs, signIn, signUp, getProducts, getLogs, addElement, editProduct } = useAuth(firebaseObject, isFirebaseInitialized);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1000)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1000);
 
   useEffect(() => {
       initializaFirebase();
       window.addEventListener('resize', () => {
           setIsMobile(window.innerWidth <= 1000);
       })
+      if(location.pathname !== '/' && !user) {
+        navigate('/');
+      }
   }, [])
 
   useEffect(() => {
@@ -39,9 +44,7 @@ function App() {
     if(!logs && user) {
       getLogs('logs')
     }
-  }, [user])
-
-  console.log(user);
+  }, [user]);
 
   let element = useRoutes([
     { path: "/", element: <Auth user={user} signIn={signIn} signUp={signUp}/> },
@@ -54,7 +57,7 @@ function App() {
   ]);
 
   return (
-    <Context.Provider value={{ products, isMobile }}> 
+    <Context.Provider value={{ products, isMobile, user, addElement, editProduct }}> 
       <Header user={user} />
       {element}  
       {(user && isMobile) && <FloatingMenu />}   

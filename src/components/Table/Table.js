@@ -25,7 +25,7 @@ export default function ProductsTable({ products, header }) {
 
 
     const [order, setOrder] = React.useState('asc');
-    const [orderBy, setOrderBy] = React.useState('sealed_quantity');
+    const [orderBy, setOrderBy] = React.useState('name');
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 

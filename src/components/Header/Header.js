@@ -30,13 +30,13 @@ const Header = ({ user }) => {
               Jurnal
             </NavLink>
             <NavLink to={'/add-product'} style={({ isActive }) => ({ color: isActive ? '#295d96' : '' })}>
-              Adauga produs
+              Creaza produs
             </NavLink>
           </div>
         )}
         <NavLink to={'/user'}>
           <IconButton sx={{ p: 0 }}>
-            <Avatar src={`img/users/${user.displayName}.jpg`} alt={`Buna, ${user.displayName}`} sx={{ width: 60, height: 60 }} />
+            <Avatar src={`img/users/${user.displayName}.jpg`} alt={`Buna, ${user.displayName}`} sx={{ width: 80, height: 80 }} />
           </IconButton>
         </NavLink>
       </div>

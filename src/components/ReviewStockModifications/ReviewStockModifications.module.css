@@ -1,0 +1,19 @@
+.container {
+    width: 100%;
+    padding: 50px 20vw;
+    box-sizing: border-box;
+}
+
+.container > div {
+    width: 100%;
+}
+
+.confirm {
+    margin: 100px auto 20px auto !important;
+}
+
+@media screen and (max-width: 1000px) {
+    .container {
+        padding: 50px 5px;
+    }
+}

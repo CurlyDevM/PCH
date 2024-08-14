@@ -1,0 +1,18 @@
+
+.container input {
+    height: 50px;
+    font-size: var(--normalSize);
+}
+
+.container .error {
+    font-weight: 700;
+    color: red;
+    margin: 20px;
+    font-size: var(--headerSize);
+}
+
+.container button {
+    max-width: 20vw;
+    min-width: 200px;
+    margin: auto;
+}

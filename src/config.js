@@ -6,6 +6,12 @@ export const productsTableHeader =  [
         label: 'Denumire',
     },
     {
+        id: 'weightToDisplay',
+        numeric: false,
+        disablePadding: false,
+        label: 'Gramaj',
+    },
+    {
         id: 'category',
         numeric: true,
         disablePadding: false,
@@ -27,7 +33,7 @@ export const productsTableHeader =  [
         id: 'unsealed_quantity',
         numeric: true,
         disablePadding: false,
-        label: 'Cantitate nesigilata',
+        label: 'Cantitate desfacuta',
     },
     {
         id: 'warning_quantity',
@@ -44,6 +50,12 @@ export const logsTableHeader =  [
         numeric: false,
         disablePadding: true,
         label: 'Nume produs',
+    },
+    {
+        id: 'weightToDisplay',
+        numeric: false,
+        disablePadding: false,
+        label: 'Gramaj',
     },
     {
         id: 'diff_sealed_quantity',
@@ -81,4 +93,31 @@ export const logsTableHeader =  [
         disablePadding: false,
         label: 'Vechea cantitate desfacuta',
     },
+]
+
+export const reviewModificationHeader =   [
+    {
+        id: 'name',
+        numeric: false,
+        disablePadding: true,
+        label: 'Nume produs',
+    },
+    {
+        id: 'weightToDisplay',
+        numeric: false,
+        disablePadding: false,
+        label: 'Gramaj',
+    },
+    {
+        id: 'sealedDiff',
+        numeric: true,
+        disablePadding: false,
+        label: 'Modificari produse sigilate',
+    },
+    {
+        id: 'unsealedDiff',
+        numeric: true,
+        disablePadding: false,
+        label: 'Modificari produse desfacute',
+    }
 ]

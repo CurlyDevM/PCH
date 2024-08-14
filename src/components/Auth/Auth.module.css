@@ -4,6 +4,10 @@
     background: linear-gradient(to bottom right,  var(--accentColor), var(--lightAccentColor));
 }
 
+.container h1 {
+    font-size: var(--headerSize);
+}
+
 .floatingContainer {
     position: relative;
     top: 15vh;
@@ -47,15 +51,17 @@
 }
 
 .inputCon > div {
-    background: var(--lightAccentColor);
+    background: #fff;
     border-radius: 5px;
 }
+
+
 
 .inputCon > div  {
     flex-grow: 1;
 }
 
-.container svg {
+.inputCon > svg {
     color: white !important;
 }
 

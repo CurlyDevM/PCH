@@ -30,31 +30,18 @@ const AllProducts = ({ products }) => {
             setFiltredProducts(products);
         } else {
             console.log(products);
-            setFiltredProducts(products.filter(product => product[category].toString().toLowerCase().includes(searchValue.toLowerCase())))
+            setFiltredProducts(products.filter(product => {
+                return product.barcode.toString().includes(searchValue) || product.name.toString().toLowerCase().includes(searchValue.toLowerCase())
+            }));
         }
     }, [searchValue, products]);
 
 
     return (
         <div className={style.container}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <h3>Toate produsele</h3>
-                <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '50%' }}>
-                    <Autocomplete
-                        className={style.category}
-                        options={categoriesToDisplay}
-                        id="category"
-                        clearOnEscape
-                        onChange={(event, newValue) => {
-                            setCategory(categories[newValue]);
-                        }}
-                        renderInput={(params) => (
-                            <TextField {...params} label="Dupa:" variant="standard" />
-                        )}
-                        sx={{ flexGrow: 1, maxWidth: '15vw', marginRight: '2vw'}}
-                    />
-                    <TextField className={style.search} id="outlined-basic" label="Cauta" variant="outlined" onChange={(e) => setSearchValue(e.target.value)} />
-                </Box>
+                <TextField className={style.search} id="outlined-basic" label="Cauta" variant="outlined" onChange={(e) => setSearchValue(e.target.value)} />
             </Box>
             <Table products={filtredProducts} header={productsTableHeader} />
         </div>

@@ -82,7 +82,7 @@ const Auth = ({ user, signIn, signUp }) => {
                         </div>
                         {!logInMode && <Password onPasswordChange={onConfirmPasswordChange} />}
                         <Button onClick={() => handleAuth()} variant="outlined">{actionText}</Button>
-                        <Button onClick={() => handleToggleAction()} variant="text">{toggleActionText}</Button>
+                        {/* <Button onClick={() => handleToggleAction()} variant="text">{toggleActionText}</Button> */}
                     </div>
                 </div>
 

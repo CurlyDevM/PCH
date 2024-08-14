@@ -13,5 +13,15 @@
 
 .container h3 {
     color: #fff;
+    font-size:30px;
 }
 
+@media screen and (max-width: 1000px) {
+    .container {
+        background: var(--accentColor);
+        padding: 0;
+    }
+    .container > div {
+        padding: 0;
+    }
+}
