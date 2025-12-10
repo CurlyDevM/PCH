@@ -1,0 +1,25 @@
+.container {
+    padding: var(--pagePadding);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.container h1 {
+    font-size: var(--headerSize);
+    margin: 20px;
+    text-align: center;
+}
+
+.form {
+    max-width: 400px;
+    border:20px solid var(--accentColor);
+    margin: 50px 0;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.form > div {
+    margin-bottom: 30px;
+}

@@ -1,0 +1,48 @@
+.container {
+    display: grid;
+    grid-template-rows: 50px;
+    align-items: center;
+    justify-items: center;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.container > div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    font-weight: 600;
+}
+
+.background {
+    background: #EEE;
+}
+
+@media screen and (max-width: 1000px) {
+    .container {
+        height: fit-content;
+        max-height: unset;
+        grid-template-columns: 1fr 50px 50px;
+        grid-auto-flow: column;
+        overflow-y: hidden;
+    }
+
+
+    .container > div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    .background {
+        background: transparent;
+    }
+}
