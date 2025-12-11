@@ -12,7 +12,6 @@ const CustomTable = ({ headerConfig, items, minWidthPerColumn}) => {
     if(items) {
       let newGridTemplateColumnsForMobile = '100px';
       for(let item of items) {
-        console.log(item.name.length, item.name)
         newGridTemplateColumnsForMobile = `${newGridTemplateColumnsForMobile} ${item.name.length * 12}px`
       }
       setGridTemplateColumnsForMobile(newGridTemplateColumnsForMobile);

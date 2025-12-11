@@ -1,0 +1,34 @@
+.container {
+    width: 100%;
+    padding: var(--pagePadding);
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: var(--headerSize);
+    margin: 40px 0;
+}
+
+.auth {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.log {
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+    .container {
+        padding: 0 5px;
+    }
+
+    .log {
+        height: fit-content;
+        max-height: unset;
+        padding: 10px 5px;
+    }
+}
