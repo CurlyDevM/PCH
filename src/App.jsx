@@ -16,6 +16,7 @@ import EditProduct from "./components/EditProduct/EditProduct";
 import Header from './components/Header/Header';
 import UserPage from './components/UserPage/UserPage';
 import FloatingMenu from './components/FloatingMenu/FloatingMenu';
+import Stock from './components/Stock/Stock';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
     { path: "/logs", element: <Logs logs={logs} /> },
     { path: "/add-product", element: <AddProduct addElement={addElement} /> },
     { path: "/edit-product", element: <EditProduct /> },
+    { path: "/stoc", element: <Stock /> },
     { path: "/user", element: <UserPage /> },
   ]);
 

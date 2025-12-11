@@ -11,7 +11,12 @@ const ReviewStockModifications = ({ productsNewStock, confirmModifications, chan
   return (
     <div className={style.container}>
       <h2> Modifica stocul produselor</h2>
-      {productsNewStock.map(product => <ModifyStockPerElement product={product} changeStock={changeStock} />)}
+      <div className='grid grid-cols-3 gap-3 justify-items-center align-center'>
+        <div> Nume produs</div>
+        <div>Modifica stoc sigilitate</div>
+        <div> Modifica stoc desfacute</div>
+        {productsNewStock.map(product => <ModifyStockPerElement product={product} changeStock={changeStock} />)}
+      </div>
       <h2> Modificari aduse stocului </h2>
       <div className={style.modifyHistory}>
         <CustomTable items={productsNewStock || []} headerConfig={reviewModificationHeader} />

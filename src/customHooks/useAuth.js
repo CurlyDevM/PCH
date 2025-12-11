@@ -27,7 +27,7 @@ const useAuth = (firebase, isFirebaseInitialized) => {
                 const data = snapshot.docs.map(doc => {
                     return { ...doc.data(), id: doc.id, weightToDisplay: `${doc.data().weight} ${doc.data().weightType ? doc.data().weightType : ''}`};
                 })
-                setProducts(data);
+                setProducts(data.sort((a,b) => a.name.localeCompare(b.name)));
             })
         }
 
@@ -36,9 +36,6 @@ const useAuth = (firebase, isFirebaseInitialized) => {
                 const data = snapshot.docs.map(doc => {
                     return doc.data();
                 })
-
-                console.log(data);
-
                 const dataWithCalcule = data?.map( log => {
                     return {
                         ...log,
@@ -82,7 +79,6 @@ const useAuth = (firebase, isFirebaseInitialized) => {
                 sealed_quantity: product.newSealedQuantity ? Number(product.newSealedQuantity) : product.sealed_quantity , 
                 unsealed_quantity: product.newUnsealedQuantity ? Number(product.newUnsealedQuantity) : product.unsealed_quantity
             }
-            console.log('to update', newProduct)
             db.collection('products').doc(product.id).update(newProduct) 
         }
     }

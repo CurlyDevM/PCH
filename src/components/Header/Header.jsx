@@ -32,6 +32,9 @@ const Header = ({ user }) => {
             <NavLink to={'/add-product'} style={({ isActive }) => ({ color: isActive ? '#295d96' : '' })}>
               Creaza produs
             </NavLink>
+            <NavLink to={'/stoc'} style={({ isActive }) => ({ color: isActive ? '#295d96' : '' })}>
+              Stoc
+            </NavLink>
           </div>
         )}
         <NavLink to={'/user'}>

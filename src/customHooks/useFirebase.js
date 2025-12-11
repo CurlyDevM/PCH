@@ -10,12 +10,9 @@ import firebaseConfigucation from '../firebaseConfigucation';
 const useFirebase = () => {
 
     const [isFirebaseInitialized, setIsFirebaseInitialized] = useState(false);
-    console.log('isFirebaseInitialized', isFirebaseInitialized)
     const initializaFirebase = () => {
         if (!firebase.apps.length) {
-            console.log('init')
             firebase.initializeApp(firebaseConfigucation);
-            console.log('set true')
             setIsFirebaseInitialized(true)
         } else {
             firebase.app(); // if already initialized, use that one
